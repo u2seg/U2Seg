@@ -1,6 +1,6 @@
 # U2Seg: Unsupervised Universal Image Segmentation
 
-We present **U2Seg**, a unified framework for **U**nsupervised **U**niversal image **Seg**mentation that consistently outperforms previous state-of-the-art methods designed for individual tasks: U2Seg for unsupervised instance segmentation, STEGO for unsupervised semantic segmentation, and the naive combination of U2Seg and STEGO for unsupervised panoptic segmentation.
+We present **U2Seg**, a unified framework for **U**nsupervised **U**niversal image **Seg**mentation that consistently outperforms previous state-of-the-art methods designed for individual tasks: CutLER for unsupervised instance segmentation, STEGO for unsupervised semantic segmentation, and the naive combination of CutLER and STEGO for unsupervised panoptic segmentation.
 
 <p align="center"> <img src='docs/teaser_img.jpg' align="center" > </p>
 
@@ -41,12 +41,12 @@ After you preparing the dataset following the aboved instruction, you should be 
 ```
 python ./tools/train_net.py --eval-only False --config-file configs/COCO-PanopticSegmentation/u2seg_R50.yaml
 ```
-Note: you need to download the pre-trained [dino backbone](https://drive.google.com/file/d/1UtRUgUQK20KS8MGebCWgLPHxrez7mfV4/view?usp=drive_link) and change the path of the corresponding ```yaml``` file.
+Note: you need to download the pre-trained [dino backbone](https://drive.google.com/file/d/1UtRUgUQK20KS8MGebCWgLPHxrez7mfV4/view?usp=sharing) and change the path of the corresponding ```yaml``` file.
 
 ### Demonstration
 we provide the the checkpoint as follows:
 
-here need a table(https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh?usp=drive_link)
+here need a table([https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh?usp=drive_link](https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh?usp=sharing))
 just put each of these to the table
 
 To run inference on images, you should first assign a checkpoints in the ```u2seg_eval.yaml```, then:
@@ -63,15 +63,9 @@ U2Seg's wide range of detection capabilities may introduce similar challenges to
 As the image can contain arbitrary instances, it may impact the model output.
 
 ## How to get support from us?
-If you have any general questions, feel free to email us at [Xudong Wang](mailto:xdwang@eecs.berkeley.edu), [Ishan Misra](mailto:imisra@meta.com) and [Rohit Girdhar](mailto:rgirdhar@meta.com). If you have code or implementation-related questions, please feel free to send emails to us or open an issue in this codebase (We recommend that you open an issue in this codebase, because your questions may help others). 
+If you have any general questions, feel free to email us at [Dantong Niu](mailto:bias_88@berkeley.edu), [Xudong Wang](mailto:xdwang@eecs.berkeley.edu). If you have code or implementation-related questions, please feel free to send emails to us or open an issue in this codebase (We recommend that you open an issue in this codebase, because your questions may help others). 
 
 ## Citation
 If you find our work inspiring or use our codebase in your research, please consider giving a star ⭐ and a citation.
 ```
-@article{wang2023cut,
-  title={Cut and Learn for Unsupervised Object Detection and Instance Segmentation},
-  author={Wang, Xudong and Girdhar, Rohit and Yu, Stella X and Misra, Ishan},
-  journal={arXiv preprint arXiv:2301.11320},
-  year={2023}
-}
 ```

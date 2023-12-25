@@ -1,0 +1,6 @@
+torch
+torchvision
+yacs>=0.1.8
+termcolor
+pykeops
+tqdm

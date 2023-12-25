@@ -1,0 +1,55 @@
+_BASE_: "Base-Panoptic-FPN.yaml"
+MODEL:
+  PIXEL_MEAN: [ 123.675, 116.280, 103.530 ]
+  PIXEL_STD: [ 58.395, 57.120, 57.375 ]
+#  WEIGHTS: "detectron2://ImageNetPretrained/MSRA/R-50.pkl"
+  WEIGHTS: "/home/niudt/detectron2/weights/dino_RN50_pretrain_d2_format.pkl" # please change this to the path where you save the pre-trained ckpt
+  RESNETS:
+    DEPTH: 50
+    NORM: "SyncBN"
+    STRIDE_IN_1X1: False
+  BACKBONE:
+    FREEZE_AT: 0
+  SEM_SEG_HEAD:
+    NUM_CLASSES: 28
+  ROI_BOX_HEAD:
+    CLS_AGNOSTIC_BBOX_REG: True
+  RPN:
+    POST_NMS_TOPK_TRAIN: 4000
+    NMS_THRESH: 0.65
+  FPN:
+    NORM: "SyncBN"
+  ROI_HEADS:
+    NAME: CascadeROIHeads
+    NUM_CLASSES: 800
+
+SOLVER:
+  STEPS: (210000, 250000)
+  MAX_ITER: 270000
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.01
+  WEIGHT_DECAY: 0.00005
+  GAMMA: 0.02
+  CLIP_GRADIENTS:
+    CLIP_TYPE: norm
+    CLIP_VALUE: 1.0
+    ENABLED: true
+    NORM_TYPE: 2.0
+  AMP:
+    ENABLED: True
+  CHECKPOINT_PERIOD: 10000
+
+
+INPUT:
+  MIN_SIZE_TRAIN: (240, 320, 480, 640, 672, 704, 736, 768, 800, 1024)
+  MAX_SIZE_TRAIN: 1333
+  MASK_FORMAT: "bitmask"
+  FORMAT: "RGB"
+TEST:
+  EVAL_PERIOD: 0
+  PRECISE_BN:
+    ENABLED: True
+    NUM_ITER: 200
+  DETECTIONS_PER_IMAGE: 100
+
+OUTPUT_DIR: ./test_800_cocotrianu2seg

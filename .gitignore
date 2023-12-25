@@ -16,8 +16,6 @@ push.sh
 *.png
 *.json
 *.diff
-*.jpg
-!/projects/DensePose/doc/images/*.jpg
 
 # compilation and distribution
 __pycache__
@@ -54,9 +52,3 @@ model_ts*.txt
 _darcs
 
 # project dirs
-/detectron2/model_zoo/configs
-/datasets/*
-!/datasets/*.*
-/projects/*/datasets
-/models
-/snippet

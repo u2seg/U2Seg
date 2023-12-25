@@ -89,7 +89,7 @@ U2Seg's wide range of detection capabilities may introduce similar challenges to
 As the image can contain arbitrary instances, it may impact the model output.
 
 ## How to get support from us?
-If you have any general questions, feel free to email us at [Dantong Niu](mailto:bias_88@berkeley.edu), [Xudong Wang](mailto:xdwang@eecs.berkeley.edu). If you have code or implementation-related questions, please feel free to send emails to us or open an issue in this codebase (We recommend that you open an issue in this codebase, because your questions may help others). 
+If you have any general questions, feel free to email us at [Dantong Niu](mailto:bias_88@berkeley.edu), [Xudong Wang](mailto:xdwang@eecs.berkeley.edu), [Xinyang Han](mailto:hanxinyang66@gmail.com). If you have code or implementation-related questions, please feel free to send emails to us or open an issue in this codebase (We recommend that you open an issue in this codebase, because your questions may help others). 
 
 ## Citation
 If you find our work inspiring or use our codebase in your research, please consider giving a star ⭐ and a citation.

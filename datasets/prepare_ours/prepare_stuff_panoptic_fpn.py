@@ -11,6 +11,7 @@ import time
 from fvcore.common.download import download
 from panopticapi.utils import rgb2id
 from PIL import Image
+import argparse
 
 # from detectron2.data.datasets.builtin_meta import COCO_CATEGORIES
 
@@ -78,8 +79,15 @@ def separate_coco_semantic_from_panoptic(panoptic_json, panoptic_root, sem_seg_r
 
 
 if __name__ == "__main__":
-    split = 'train' # change the split based on your needs
-    cluster_num = '800' # change the cluster number based on your needs
+    parser = argparse.ArgumentParser(description='Script for processing data with cluster numbers.')
+    parser.add_argument('--split', type=str, default='train', help='Dataset split to use (e.g., train, test).')
+    parser.add_argument('--cluster_num', type=str, default='800', help='Cluster number to use.')
+    args = parser.parse_args()
+
+    split = args.split
+    cluster_num = args.cluster_num
+
+    print(f"Split: {split}, Cluster Number: {cluster_num}")
     raw_annotation = json.load(open('datasets/prepare_ours/u2seg_annotations/panoptic_annotations/coco{}_{}.json'.format(split, cluster_num)))
     COCO_CATEGORIES = raw_annotation['categories']
     dataset_dir = 'datasets/prepare_ours/u2seg_annotations/panoptic_annotations'

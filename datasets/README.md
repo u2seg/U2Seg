@@ -52,7 +52,7 @@ U2Seg-main/datasets
 |   |   └── panoptic_annotations (this will be generated using our code)
 
 ```
-After you structure the file as above, you can generate the panoptic annotations (With 800 cluster centroid) by:
+After you structure the file as above, you can generate the panoptic annotations (with 800 cluster centroid) by:
 
 ```
 python ./datasets/prepare_ours/generate_pseudo_panoptic.py --class_num 800 --split train

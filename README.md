@@ -46,8 +46,6 @@ Note: you need to download the pre-trained [dino backbone](https://drive.google.
 To train U2Seg model with different clustering number (e.g. 300), you can use `configs/COCO-PanopticSegmentation/u2seg_R50_300.yaml` config file and set the environment variable by `export CLUSTER_NUM=300`.
 
 ### Demonstration
-
-### Model Zoo
 We provide models trained with different cluster numbers and training sets. Each cell in the table below contains a link to the corresponding model checkpoint. Place the downloaded ckpts under `ckpts` folder.
 
 <table>

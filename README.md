@@ -44,14 +44,39 @@ python ./tools/train_net.py  --config-file ./configs/COCO-PanopticSegmentation/u
 Note: you need to download the pre-trained [dino backbone](https://drive.google.com/file/d/1UtRUgUQK20KS8MGebCWgLPHxrez7mfV4/view?usp=sharing) and change the path of the corresponding ```yaml``` file.
 
 ### Demonstration
-we provide the the checkpoint as follows:
 
-here need a table([https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh?usp=drive_link](https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh?usp=sharing))
-just put each of these to the table
+### Model Zoo
+We provide models trained with different cluster numbers and training sets. Each cell in the table below contains a link to the corresponding model checkpoint. Place the downloaded ckpts under `ckpts` folder.
+
+<table>
+<thead>
+<tr>
+<th align="center">Cluster Num</th>
+<th align="center">ImageNet</th>
+<th align="center">Coco</th>
+<th align="center">ImageNet + Coco</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">800</td>
+<td align="center"><a href="URL_TO_800_IMAGENET_CHECKPOINT">download</a></td>
+<td align="center"><a href="URL_TO_800_COCO_CHECKPOINT">download</a></td>
+<td align="center"><a href="URL_TO_800_IMAGENET_COCO_CHECKPOINT">download</a></td>
+</tr>
+<tr>
+<td align="center">300</td>
+<td align="center"><a href="URL_TO_300_IMAGENET_CHECKPOINT">download</a></td>
+<td align="center"><a href="URL_TO_300_COCO_CHECKPOINT">download</a></td>
+<td align="center"><a href="URL_TO_300_IMAGENET_COCO_CHECKPOINT">download</a></td>
+</tr>
+</tbody>
+</table>
+
 
 To run inference on images, you should first assign a checkpoints in the ```u2seg_eval.yaml```, then:
 ```
-python ./demo/u2seg_demo.py --config-file configs/COCO-PanopticSegmentation/u2seg_eval.yaml 
+python ./demo/u2seg_demo.py --config-file configs/COCO-PanopticSegmentation/u2seg_eval_800.yaml --input datasets/demo_imgs/*jpg --output results/demo_800 
 ```
 
  

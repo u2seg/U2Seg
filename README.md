@@ -43,7 +43,7 @@ python ./tools/train_net.py  --config-file ./configs/COCO-PanopticSegmentation/u
 ```
 Note: you need to download the pre-trained [dino backbone](https://drive.google.com/file/d/1UtRUgUQK20KS8MGebCWgLPHxrez7mfV4/view?usp=sharing) and change the path of the corresponding ```yaml``` file.
 
-To train U2Seg model with different clustering number (e.g. 300), you can use `configs/COCO-PanopticSegmentation/u2seg_R50_300.yaml` config file and set the environment variable by `export CLUSTER_NUM=300`.
+To train U2Seg model with different clustering number (e.g. 300), you can use `configs/COCO-PanopticSegmentation/u2seg_R50_300.yaml` config file and set the environment variable by `export CLUSTER_NUM=300`. (This variable would be used in `detectron2/data/datasets/builtin.py` and `detectron2/data/datasets/builtin_meta.py`)
 
 ### Demonstration
 We provide models trained with different cluster numbers and training sets. Each cell in the table below contains a link to the corresponding model checkpoint. Place the downloaded ckpts under `ckpts` folder.
@@ -60,15 +60,15 @@ We provide models trained with different cluster numbers and training sets. Each
 <tbody>
 <tr>
 <td align="center">800</td>
-<td align="center"><a href="URL_TO_800_IMAGENET_CHECKPOINT">download</a></td>
-<td align="center"><a href="URL_TO_800_COCO_CHECKPOINT">download</a></td>
-<td align="center"><a href="URL_TO_800_IMAGENET_COCO_CHECKPOINT">download</a></td>
+<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">download</a></td>
+<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">download</a></td>
+<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">download</a></td>
 </tr>
 <tr>
 <td align="center">300</td>
-<td align="center"><a href="URL_TO_300_IMAGENET_CHECKPOINT">download</a></td>
-<td align="center"><a href="URL_TO_300_COCO_CHECKPOINT">download</a></td>
-<td align="center"><a href="URL_TO_300_IMAGENET_COCO_CHECKPOINT">download</a></td>
+<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">download</a></td>
+<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">download</a></td>
+<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">download</a></td>
 </tr>
 </tbody>
 </table>
@@ -79,6 +79,7 @@ To run inference on images, you should first assign a checkpoints in the ```u2se
 python ./demo/u2seg_demo.py --config-file configs/COCO-PanopticSegmentation/u2seg_eval_800.yaml --input datasets/demo_imgs/*jpg --output results/demo_800 
 ```
 
+To test model trained with different clustering number (e.g. 300), you can use config file like this `configs/COCO-PanopticSegmentation/u2seg_R50_300.yaml`.
  
 ## License
 The majority of U2Seg, Detectron2 and DINO are licensed under the [CC-BY-NC license](LICENSE), however portions of the project are available under separate license terms: TokenCut, Bilateral Solver and CRF are licensed under the MIT license; If you later add other third party code, please keep this license info updated, and please let us know if that component is licensed under something other than CC-BY-NC, MIT, or CC0.

@@ -87,10 +87,10 @@ We give a few demo images in ```demo/images``` and the corresponding visualizati
 </p>
 
 
-## Evaluation
+# Evaluation
 Will coming soon.
 
-## Efficient Learning
+# Efficient Learning
 Will coming soon.
 
 ## License

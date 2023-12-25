@@ -45,7 +45,7 @@ Note: you need to download the pre-trained [dino backbone](https://drive.google.
 
 To train U2Seg model with different clustering number (e.g. 300), you can use `configs/COCO-PanopticSegmentation/u2seg_R50_300.yaml` config file and set the environment variable by `export CLUSTER_NUM=300`. (This variable would be used in `detectron2/data/datasets/builtin.py` and `detectron2/data/datasets/builtin_meta.py`)
 
-### Demonstration
+### Inference
 We provide models trained with different cluster numbers and training sets. Each cell in the table below contains a link to the corresponding model checkpoint. Place the downloaded ckpts under `ckpts` folder.
 
 <table>
@@ -76,10 +76,15 @@ We provide models trained with different cluster numbers and training sets. Each
 
 To run inference on images, you should first assign a checkpoint in the ```u2seg_eval.yaml```, then:
 ```
-python ./demo/u2seg_demo.py --config-file configs/COCO-PanopticSegmentation/u2seg_eval_800.yaml --input datasets/demo_imgs/*jpg --output results/demo_800 
+python ./demo/u2seg_demo.py --config-file configs/COCO-PanopticSegmentation/u2seg_eval_800.yaml --input demo/images/*jpg --output results/demo_800 
 ```
 
 To test model trained with different clustering number (e.g. 300), you can use config file like this `configs/COCO-PanopticSegmentation/u2seg_R50_300.yaml`.
+
+We give a few demo images in demo/images and the corresponding visualizations of the panoptic segmentation with U2Seg:
+<p align="center">
+  <img src="docs/u2seg-demo.jpg" width=100%>
+</p>
  
 ## License
 The majority of U2Seg, Detectron2 and DINO are licensed under the [CC-BY-NC license](LICENSE), however portions of the project are available under separate license terms: TokenCut, Bilateral Solver and CRF are licensed under the MIT license; If you later add other third party code, please keep this license info updated, and please let us know if that component is licensed under something other than CC-BY-NC, MIT, or CC0.

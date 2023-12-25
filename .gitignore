@@ -51,4 +51,5 @@ model_ts*.txt
 .vscode
 _darcs
 
-# project dirs
+# Logging
+test_800_cocotrianu2seg

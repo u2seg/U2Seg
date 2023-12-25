@@ -30,6 +30,7 @@ from .lvis import get_lvis_instances_meta, register_lvis_instances
 from .pascal_voc import register_pascal_voc
 
 # ==== Predefined datasets and splits for COCO ==========
+cluster_num = os.getenv('CLUSTER_NUM', '800')
 _PREDEFINED_SPLITS_COCO_SEMI = {}
 _PREDEFINED_SPLITS_COCO_SEMI["coco_semi"] = {
     # we use seed 42 to be consistent with previous works on SSL detection and segmentation
@@ -63,7 +64,7 @@ _PREDEFINED_SPLITS_COCO["coco"] = {
         "coco/val2014",
         "coco/annotations/instances_valminusminival2014.json",
     ),
-    "coco_2017_train": ("./coco/train2017", "./prepare_ours/u2seg_annotations/ins_annotations/cocotrain_800.json"),
+    "coco_2017_train": ("./coco/train2017", f"./prepare_ours/u2seg_annotations/ins_annotations/cocotrain_{cluster_num}.json"),
     "coco_2017_val": ("./coco/val2017", "./coco/annotations/instances_val2017.json"),
     "coco_2017_test": ("coco/test2017", "coco/annotations/image_info_test2017.json"),
     "coco_2017_test-dev": ("coco/test2017", "coco/annotations/image_info_test-dev2017.json"),
@@ -99,14 +100,14 @@ _PREDEFINED_SPLITS_COCO["coco_person"] = {
 _PREDEFINED_SPLITS_COCO_PANOPTIC = {
     "coco_2017_train_panoptic": (
         # This is the original panoptic annotation directory
-        "./prepare_ours/u2seg_annotations/panoptic_annotations/cocotrain_800", # this should be .png format annotations
-        "./prepare_ours/u2seg_annotations/panoptic_annotations/cocotrain_800.json", #this should be .json file
+        f"./prepare_ours/u2seg_annotations/panoptic_annotations/cocotrain_{cluster_num}", # this should be .png format annotations
+        f"./prepare_ours/u2seg_annotations/panoptic_annotations/cocotrain_{cluster_num}.json", #this should be .json file
         # This directory contains semantic annotations that are
         # converted from panoptic annotations.
         # It is used by PanopticFPN.
         # You can use the script at detectron2/datasets/prepare_panoptic_fpn.py
         # to create these directories.
-        "./prepare_ours/u2seg_annotations/panoptic_annotations/panoptic_stuff_cocotrain_800",
+        f"./prepare_ours/u2seg_annotations/panoptic_annotations/panoptic_stuff_cocotrain_{cluster_num}",
     ),
     "coco_2017_val_panoptic": (
         "/home/niudt/u2seg_test/detectron2/datasets/datasets/coco/val2017",

@@ -13,6 +13,7 @@ The only goal is to allow users who don't have these dataset to use pre-trained 
 Users don't have to download a COCO json (which contains metadata), in order to visualize a
 COCO model (with correct class names and colors).
 """
+import os
 def create_cate(num):
     import random
     cate = []
@@ -33,7 +34,9 @@ def create_cate(num):
         cate.append(curr)
     return cate
 
-COCO_CATEGORIES = create_cate(num = 800)
+
+cluster_num = os.getenv('CLUSTER_NUM', '800')
+COCO_CATEGORIES = create_cate(num = int(cluster_num))
 
 # COCO_CATEGORIES = [
 #     {"color": [220, 20, 60], "isthing": 1, "id": 1, "name": "person"},

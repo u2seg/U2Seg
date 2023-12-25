@@ -39,7 +39,7 @@ For implementers who wants to play with out models, we provide well-processed an
 After you preparing the dataset following the aboved instruction, you should be able to train the U2Seg universal segmentation model by:
 
 ```
-python ./tools/train_net.py --eval-only False --config-file configs/COCO-PanopticSegmentation/u2seg_R50.yaml
+python ./tools/train_net.py  --config-file ./configs/COCO-PanopticSegmentation/u2seg_R50_800.yaml
 ```
 Note: you need to download the pre-trained [dino backbone](https://drive.google.com/file/d/1UtRUgUQK20KS8MGebCWgLPHxrez7mfV4/view?usp=sharing) and change the path of the corresponding ```yaml``` file.
 

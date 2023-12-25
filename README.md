@@ -43,6 +43,8 @@ python ./tools/train_net.py  --config-file ./configs/COCO-PanopticSegmentation/u
 ```
 Note: you need to download the pre-trained [dino backbone](https://drive.google.com/file/d/1UtRUgUQK20KS8MGebCWgLPHxrez7mfV4/view?usp=sharing) and change the path of the corresponding ```yaml``` file.
 
+To train U2Seg model with different clustering number (e.g. 300), you can use `configs/COCO-PanopticSegmentation/u2seg_R50_300.yaml` config file and set the environment variable by `export CLUSTER_NUM=300`.
+
 ### Demonstration
 
 ### Model Zoo

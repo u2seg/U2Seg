@@ -53,22 +53,22 @@ We provide models trained with different cluster numbers and training sets. Each
 <tr>
 <th align="center">Cluster Num</th>
 <th align="center">ImageNet</th>
-<th align="center">Coco</th>
-<th align="center">ImageNet + Coco</th>
+<th align="center">COCO</th>
+<th align="center">ImageNet + COCO</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="center">800</td>
-<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">download</a></td>
-<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">download</a></td>
-<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">download</a></td>
+<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">CheckPoint</a></td>
+<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">CheckPoint</a></td>
+<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">CheckPoint</a></td>
 </tr>
 <tr>
 <td align="center">300</td>
-<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">download</a></td>
-<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">download</a></td>
-<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">download</a></td>
+<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">CheckPoint</a></td>
+<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">CheckPoint</a></td>
+<td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">CheckPoint</a></td>
 </tr>
 </tbody>
 </table>
@@ -87,10 +87,10 @@ We give a few demo images in ```demo/images``` and the corresponding visualizati
 </p>
 
 
-# Evaluation
+### Evaluation
 Will coming soon.
 
-# Efficient Learning
+### Efficient Learning
 Will coming soon.
 
 ## License

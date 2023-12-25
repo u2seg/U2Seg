@@ -33,7 +33,7 @@ U2Seg has 4 stages: 1) generating pseudo instance masks with MaskCut and cluster
 This part include MaskCut+Clustering, which we use to generate the pseudo for training of U2Seg, additional information will come later. 
 For implementers who wants to play with out models, we provide well-processed annotations in Data Preparation.
 
-## Universail Image Segmentation
+## Universal Image Segmentation
 
 ### Training
 After you preparing the dataset following the aboved instruction, you should be able to train the U2Seg universal segmentation model by:

@@ -85,7 +85,14 @@ We give a few demo images in ```demo/images``` and the corresponding visualizati
 <p align="center">
   <img src="docs/u2seg-demo.png" width=80%>
 </p>
- 
+
+
+## Evaluation
+Will coming soon.
+
+## Efficient Learning
+Will coming soon.
+
 ## License
 The majority of U2Seg, Detectron2 and DINO are licensed under the [CC-BY-NC license](LICENSE), however portions of the project are available under separate license terms: TokenCut, Bilateral Solver and CRF are licensed under the MIT license; If you later add other third party code, please keep this license info updated, and please let us know if that component is licensed under something other than CC-BY-NC, MIT, or CC0.
 

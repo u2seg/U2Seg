@@ -81,9 +81,9 @@ python ./demo/u2seg_demo.py --config-file configs/COCO-PanopticSegmentation/u2se
 
 To test model trained with different clustering number (e.g. 300), you can use config file like this `configs/COCO-PanopticSegmentation/u2seg_R50_300.yaml`.
 
-We give a few demo images in demo/images and the corresponding visualizations of the panoptic segmentation with U2Seg:
+We give a few demo images in ```demo/images``` and the corresponding visualizations of the panoptic segmentation with U2Seg:
 <p align="center">
-  <img src="docs/u2seg-demo.jpg" width=100%>
+  <img src="docs/u2seg-demo.png" width=80%>
 </p>
  
 ## License

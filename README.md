@@ -30,13 +30,13 @@ See [Preparing Datasets for U2Seg](datasets/README.md).
 U2Seg has 4 stages: 1) generating pseudo instance masks with MaskCut and clustering, 2) generating pseudo semantic masks with STEGO and 3) merging instance masks, semantic masks to get pseudo labels for panoptic segmentation and 4) learning unsupervised universal segmentor from pseudo-masks of unlabeled data.
 
 ## Pseudo Mask Gneration
-This part include MaskCut+Clustering, which we use to generate the pseudo for training of U2Seg, additional information will come later. 
+This part includes MaskCut+Clustering, which we use to generate the pseudo for training of U2Seg, additional information will come later. 
 For implementers who wants to play with out models, we provide well-processed annotations in Data Preparation.
 
 ## Universal Image Segmentation
 
 ### Training
-After you preparing the dataset following the aboved instruction, you should be able to train the U2Seg universal segmentation model by:
+After you prepare the dataset following the above instructions, you should be able to train the U2Seg universal segmentation model by:
 
 ```
 python ./tools/train_net.py  --config-file ./configs/COCO-PanopticSegmentation/u2seg_R50_800.yaml
@@ -74,7 +74,7 @@ We provide models trained with different cluster numbers and training sets. Each
 </table>
 
 
-To run inference on images, you should first assign a checkpoints in the ```u2seg_eval.yaml```, then:
+To run inference on images, you should first assign a checkpoint in the ```u2seg_eval.yaml```, then:
 ```
 python ./demo/u2seg_demo.py --config-file configs/COCO-PanopticSegmentation/u2seg_eval_800.yaml --input datasets/demo_imgs/*jpg --output results/demo_800 
 ```
@@ -85,7 +85,7 @@ To test model trained with different clustering number (e.g. 300), you can use c
 The majority of U2Seg, Detectron2 and DINO are licensed under the [CC-BY-NC license](LICENSE), however portions of the project are available under separate license terms: TokenCut, Bilateral Solver and CRF are licensed under the MIT license; If you later add other third party code, please keep this license info updated, and please let us know if that component is licensed under something other than CC-BY-NC, MIT, or CC0.
 
 ## Ethical Considerations
-U2Seg's wide range of detection capabilities may introduce similar challenges to many other visual recognition recognition methods.
+U2Seg's wide range of detection capabilities may introduce similar challenges to many other visual recognition methods.
 As the image can contain arbitrary instances, it may impact the model output.
 
 ## How to get support from us?

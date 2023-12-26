@@ -72,7 +72,7 @@ We provide models trained with different cluster numbers and training sets. Each
 </tr>
 </tbody>
 </table>  
-
+ 
 
 To run inference on images, you should first assign a checkpoint in the ```u2seg_eval.yaml```, then:
 ```

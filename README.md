@@ -71,7 +71,7 @@ We provide models trained with different cluster numbers and training sets. Each
 <td align="center"><a href="https://drive.google.com/drive/folders/186GBbIhEW7W0eidGOGRTmTyM_HedSOQh">CheckPoint</a></td>
 </tr>
 </tbody>
-</table>
+</table>  
 
 
 To run inference on images, you should first assign a checkpoint in the ```u2seg_eval.yaml```, then:

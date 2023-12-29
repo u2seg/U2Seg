@@ -9,7 +9,7 @@ We present **U2Seg**, a unified framework for **U**nsupervised **U**niversal ima
 > Berkeley AI Research, UC Berkeley    
 > Preprint
 
-[project page](http://people.eecs.berkeley.edu/~xdwang/projects/U2SEG/) | [arxiv](https://arxiv.org/abs/2312.17243) | [bibtex](#citation)
+[project page](https://u2seg.github.io/) | [arxiv](https://arxiv.org/abs/2312.17243) | [bibtex](#citation)
 
 <!-- ## Features 
 - U2Seg is the first universal unsupervised image segmentation model that can tackle unsupervised semantic-aware instance, semantic and panoptic segmentation tasks using a unified framework.

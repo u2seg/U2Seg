@@ -9,17 +9,6 @@ We present **U2Seg**, a unified framework for **U**nsupervised **U**niversal ima
 > Berkeley AI Research, UC Berkeley    
 > Preprint
 
-We present **U2Seg**, a unified framework for **U**nsupervised **U**niversal image **Seg**mentation that consistently outperforms previous state-of-the-art methods designed for individual tasks: CutLER for unsupervised instance segmentation, STEGO for unsupervised semantic segmentation, and the naive combination of CutLER and STEGO for unsupervised panoptic segmentation.
-
-<p align="center"> <img src='docs/teaser_img.jpg' align="center" > </p>
-
-> [**Unsupervised Universal Image Segmentation**](http://people.eecs.berkeley.edu/~xdwang/projects/U2Seg/)            
-> [Xudong Wang*](https://people.eecs.berkeley.edu/~xdwang/), [Dantong Niu*](https://scholar.google.com/citations?user=AzlUrvUAAAAJ&hl=en), [Xinyang Han*](https://xinyanghan.github.io/), [Long Lian](https://tonylian.com/), [Roei Herzig](https://roeiherz.github.io/), [Trevor Darrell](https://people.eecs.berkeley.edu/~trevor/)     
-> Berkeley AI Research, UC Berkeley    
-> Arxiv
-
-[project page](https://u2seg.github.io/) | [arxiv](https://arxiv.org/abs/2312.17243) | [bibtex](#citation)
-
 [project page](http://people.eecs.berkeley.edu/~xdwang/projects/U2SEG/) | [arxiv](https://arxiv.org/abs/2312.17243) | [bibtex](#citation)
 
 <!-- ## Features 

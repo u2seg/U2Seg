@@ -6,9 +6,10 @@ We present **U2Seg**, a unified framework for **U**nsupervised **U**niversal ima
 
 > [**Unsupervised Universal Image Segmentation**](http://people.eecs.berkeley.edu/~xdwang/projects/U2Seg/)            
 > [Xudong Wang*](https://people.eecs.berkeley.edu/~xdwang/), [Dantong Niu*](https://scholar.google.com/citations?user=AzlUrvUAAAAJ&hl=en), [Xinyang Han*](https://xinyanghan.github.io/), [Long Lian](https://tonylian.com/), [Roei Herzig](https://roeiherz.github.io/), [Trevor Darrell](https://people.eecs.berkeley.edu/~trevor/)     
-> Arxiv 
+> Berkeley AI Research, UC Berkeley    
+> Arxiv
 
-[project page](http://people.eecs.berkeley.edu/~xdwang/projects/U2Seg/) | [arxiv](https://arxiv.org/abs/2301.11320) | [colab](https://colab.research.google.com/drive/1NgEyFHvOfuA2MZZnfNPWg1w5gSr3HOBb?usp=sharing) | [bibtex](#citation)
+[project page](https://u2seg.github.io/) | [arxiv](https://arxiv.org/abs/2312.17243) | [bibtex](#citation)
 
 <!-- ## Features 
 - U2Seg is the first universal unsupervised image segmentation model that can tackle unsupervised semantic-aware instance, semantic and panoptic segmentation tasks using a unified framework.
@@ -106,6 +107,14 @@ If you have any general questions, feel free to email us at [Dantong Niu](mailto
 ## Citation
 If you find our work inspiring or use our codebase in your research, please consider giving a star ⭐ and a citation.
 ```
+misc{niu2023unsupervised,
+      title={Unsupervised Universal Image Segmentation}, 
+      author={Dantong Niu and Xudong Wang and Xinyang Han and Long Lian and Roei Herzig and Trevor Darrell},
+      year={2023},
+      eprint={2312.17243},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
 ```
 
 

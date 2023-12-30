@@ -95,7 +95,7 @@ Coming soon.
 Coming soon.
 
 ## License
-U2Seg is licensed under the [Apache](LICENSE), however portions of the project are available under separate license terms: Detectron2 and DINO are licensed under the CC-BY-NC license; TokenCut, Bilateral Solver and CRF are licensed under the MIT license; If you later add other third party code, please keep this license info updated, and please let us know if that component is licensed under something other than CC-BY-NC, MIT, or CC0.
+U2Seg is licensed under the [Apache](LICENSE), however portions of the project are available under separate license terms: CutLER, Detectron2 and DINO are licensed under the CC-BY-NC license; TokenCut, Bilateral Solver and CRF are licensed under the MIT license; If you later add other third party code, please keep this license info updated, and please let us know if that component is licensed under something other than CC-BY-NC, MIT, or CC0.
 
 ## Ethical Considerations
 U2Seg's wide range of detection capabilities may introduce similar challenges to many other visual recognition methods.

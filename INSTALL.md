@@ -18,7 +18,7 @@ pip install -e .
 ```
 
 ### Install other dependencies
-In order to make the model compatible to your syste, you may need adjust the version of some pachages:
+In order to make the model compatible to your system, you may need adjust the version of some pachages:
 
 ```
 pip install pillow==9.5

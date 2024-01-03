@@ -10,10 +10,21 @@ We present **U2Seg**, a unified framework for **U**nsupervised **U**niversal ima
 > Preprint
 
 [project page](https://u2seg.github.io/) | [arxiv](https://arxiv.org/abs/2312.17243) | [bibtex](#citation)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/unsupervised-universal-image-segmentation/unsupervised-panoptic-segmentation-on-coco)](https://paperswithcode.com/sota/unsupervised-panoptic-segmentation-on-coco?p=unsupervised-universal-image-segmentation)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/unsupervised-universal-image-segmentation/unsupervised-zero-shot-panoptic-segmentation)](https://paperswithcode.com/sota/unsupervised-zero-shot-panoptic-segmentation?p=unsupervised-universal-image-segmentation)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/unsupervised-universal-image-segmentation/unsupervised-zero-shot-instance-segmentation)](https://paperswithcode.com/sota/unsupervised-zero-shot-instance-segmentation?p=unsupervised-universal-image-segmentation)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/unsupervised-universal-image-segmentation/unsupervised-semantic-segmentation-on-coco-7)](https://paperswithcode.com/sota/unsupervised-semantic-segmentation-on-coco-7?p=unsupervised-universal-image-segmentation)
+
+<p align="center">
+  <a href="https://paperswithcode.com/sota/unsupervised-panoptic-segmentation-on-coco?p=unsupervised-universal-image-segmentation">
+    <img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/unsupervised-universal-image-segmentation/unsupervised-panoptic-segmentation-on-coco">
+  </a>
+  <a href="https://paperswithcode.com/sota/unsupervised-zero-shot-panoptic-segmentation?p=unsupervised-universal-image-segmentation">
+    <img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/unsupervised-universal-image-segmentation/unsupervised-zero-shot-panoptic-segmentation">
+  </a>
+  <a href="https://paperswithcode.com/sota/unsupervised-zero-shot-instance-segmentation?p=unsupervised-universal-image-segmentation">
+    <img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/unsupervised-universal-image-segmentation/unsupervised-zero-shot-instance-segmentation">
+  </a>
+  <a href="https://paperswithcode.com/sota/unsupervised-semantic-segmentation-on-coco-7?p=unsupervised-universal-image-segmentation">
+    <img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/unsupervised-universal-image-segmentation/unsupervised-semantic-segmentation-on-coco-7">
+  </a>
+</p>
 
 <!-- ## Features 
 - U2Seg is the first universal unsupervised image segmentation model that can tackle unsupervised semantic-aware instance, semantic and panoptic segmentation tasks using a unified framework.

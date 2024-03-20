@@ -7,7 +7,7 @@ We present **U2Seg**, a unified framework for **U**nsupervised **U**niversal ima
 > [**Unsupervised Universal Image Segmentation**](https://u2seg.github.io/)            
 > [Dantong Niu*](https://scholar.google.com/citations?user=AzlUrvUAAAAJ&hl=en), [Xudong Wang*](https://people.eecs.berkeley.edu/~xdwang/), [Xinyang Han*](https://xinyanghan.github.io/), [Long Lian](https://tonylian.com/), [Roei Herzig](https://roeiherz.github.io/), [Trevor Darrell](https://people.eecs.berkeley.edu/~trevor/)     
 > Berkeley AI Research, UC Berkeley    
-> Preprint
+> CVPR 2024    
 
 [project page](https://u2seg.github.io/) | [arxiv](https://arxiv.org/abs/2312.17243) | [bibtex](#citation)
 

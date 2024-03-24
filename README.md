@@ -108,7 +108,7 @@ We give a few demo images in ```demo/images``` and the corresponding visualizati
 Coming soon.
 
 ### Efficient Learning
-Coming soon.
+We give the reproduction of our efficient learning part in [U2Seg_eff](https://github.com/Dantong88/U2Seg_eff/tree/main/detectron2). See that repo if you want to play with this part.
 
 ## License
 U2Seg is licensed under the [Apache](LICENSE), however portions of the project are available under separate license terms: CutLER, Detectron2 and DINO are licensed under the CC-BY-NC license; TokenCut, Bilateral Solver and CRF are licensed under the MIT license; If you later add other third party code, please keep this license info updated, and please let us know if that component is licensed under something other than CC-BY-NC, MIT, or CC0.

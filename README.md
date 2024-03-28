@@ -105,7 +105,24 @@ We give a few demo images in ```demo/images``` and the corresponding visualizati
 
 
 ### Evaluation
-Coming soon.
+To reproduce the quantitative evaluation results in the main paper, user can following the steps below.
+
+Since we should first do the hungarian matching to map our cluter id to real cagetory id. We have two mode that should be execute one by one. The user needs to first run:
+
+```
+python tools/train_net.py --config-file configs/COCO-PanopticSegmentation/u2seg_eval.yaml --eval-only --eval-mode hungarian_matching --num-gpus 1
+```
+* note that this should run only use 1 gpu. After that, a folder named ```hungarian_matching``` should be gnerated in ```./```, we provide an [example with cluter number is 300](https://drive.google.com/drive/folders/19ka73SH1mHAfflzlZpA2McWeZakLujEX?usp=sharing) we generate the user can have a quick check of the intermidate results.
+
+Then run a second time with:
+
+```
+python tools/train_net.py --config-file configs/COCO-PanopticSegmentation/u2seg_eval.yaml --eval-only --eval-mode eval --num-gpus 8
+```
+* this can be executed by multiple gpus.
+
+
+
 
 ### Efficient Learning
 We give the reproduction of our efficient learning part in [U2Seg_eff](https://github.com/Dantong88/U2Seg_eff). See that repo if you want to play with this part.

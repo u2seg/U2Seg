@@ -49,10 +49,13 @@ class COCOPanopticEvaluator(DatasetEvaluator):
         if self._output_dir is not None:
             PathManager.mkdirs(self._output_dir)
 
-        self.semantic_mapping_dict = json.load(
-            open('./hungarian_matching/semantic_mapping.json'))
-        self.instance_mapping_dict = json.load(
-            open('./hungarian_matching/instance_mapping.json'))
+        if os.path.exists('./hungarian_matching/semantic_mapping.json'):
+            self.semantic_mapping_dict = json.load(
+                open('./hungarian_matching/semantic_mapping.json'))
+            self.instance_mapping_dict = json.load(
+                open('./hungarian_matching/instance_mapping.json'))
+        else:
+            self.mode = 'hungarian_matching'
 
     def reset(self):
         self._predictions = []
@@ -133,12 +136,13 @@ class COCOPanopticEvaluator(DatasetEvaluator):
             file_name = os.path.basename(input["file_name"])
             file_name_png = os.path.splitext(file_name)[0] + ".png"
             with io.BytesIO() as out:
-                segments_info_ = []
-                for seg in segments_info:
-                    new_seg, panoptic_img = self._convert_category_id(seg, panoptic_img)
-                    if new_seg != None:
-                        segments_info_.append(new_seg)
-                segments_info = segments_info_
+                if self.mode != 'hungarian_matching':
+                    segments_info_ = []
+                    for seg in segments_info:
+                        new_seg, panoptic_img = self._convert_category_id(seg, panoptic_img)
+                        if new_seg != None:
+                            segments_info_.append(new_seg)
+                    segments_info = segments_info_
                 Image.fromarray(id2rgb(panoptic_img)).save(out, format="PNG")
 
                 self._predictions.append(

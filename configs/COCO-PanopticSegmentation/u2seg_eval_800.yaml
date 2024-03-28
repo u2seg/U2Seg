@@ -55,4 +55,4 @@ TEST:
 
 
 
-OUTPUT_DIR: ./cutler_300_cityscapes_test
+OUTPUT_DIR: ./u2seg_300_coco_eval

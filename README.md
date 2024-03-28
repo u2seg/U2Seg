@@ -107,22 +107,22 @@ We give a few demo images in ```demo/images``` and the corresponding visualizati
 ### Evaluation
 To reproduce the quantitative evaluation results in the main paper, user can following the steps below.
 
-#### 1. prepare the ground truth annotations
-Since the original official panoptic annotations have 53 semantic categories, while u2seg has 15 supercategories, first step run [code](https://github.com/u2seg/U2Seg/blob/main/datasets/prepare_ours/get_panoptic_anns_supercategory.py) to generate the supercategory version of groudtruth, then you will get ```panoptic_val2017_300super.json``` under the ```detectron2/datasets/datasets/panoptic_anns``` path.
+#### 1. Prepare the ground truth annotations
+Since the original official panoptic annotations have 53 semantic categories, while u2seg has 15 supercategories, first run [```get_panoptic_anns_supercategory.py```](https://github.com/u2seg/U2Seg/blob/main/datasets/prepare_ours/get_panoptic_anns_supercategory.py) to generate the supercategory version of groudtruth, then you will get ```panoptic_val2017_300super.json``` under the ```detectron2/datasets/datasets/panoptic_anns``` path.
 
-#### 2. set the CATEGORIES
-User should manually comment out line 42-176 in ```detectron2/data/datasets/builtin_meta.py``` when swithch from training to evaluation. Also user needs to maunally change the ```cluster_num``` in line 39 in [```detectron2/evaluation/panoptic_evaluation.py```](https://github.com/u2seg/U2Seg/blob/main/detectron2/evaluation/panoptic_evaluation.py) based on your own seeting.
+#### 2. Set the CATEGORIES
+User should manually comment out line 42-176 in [```detectron2/data/datasets/builtin_meta.py```](https://github.com/u2seg/U2Seg/blob/main/detectron2/data/datasets/builtin_meta.py) when swithch from training to evaluation. Also user needs to maunally change the ```cluster_num``` in line 39 in [```detectron2/evaluation/panoptic_evaluation.py```](https://github.com/u2seg/U2Seg/blob/main/detectron2/evaluation/panoptic_evaluation.py) based on your own seeting.
 
-#### 2. get hungarain mapping dict
+#### 3. Get hungarain mapping dict
 We do the hungarian matching to map our cluter id to real cagetory id. The user needs to run:
 
 ```
 export CLUSTER_NUM=300
 python tools/train_net.py --config-file configs/COCO-PanopticSegmentation/u2seg_eval_300.yaml --eval-only --eval-mode hungarian_matching --num-gpus 1
 ```
-* note that this should be run only by using one single gpu. After that, a folder named ```hungarian_matching``` should be gnerated in ```./```, we provide an [example with cluter number is 300](https://drive.google.com/drive/folders/19ka73SH1mHAfflzlZpA2McWeZakLujEX?usp=sharing) we generate the user can have a quick check of the intermidate results.
+* note that this should be run only by using one single gpu. After that, a folder named ```hungarian_matching``` should be gnerated under ```detectron2/```, we provide an [example with cluter number is 300](https://drive.google.com/drive/folders/19ka73SH1mHAfflzlZpA2McWeZakLujEX?usp=sharing) we generate the user can have a quick check of the intermidate results.
 
-#### 3. get evaluation results for instance segmentation, semantic segmentation and panoptic segmentation
+#### 4. Get evaluation results for instance segmentation, semantic segmentation and panoptic segmentation
 ```
 export CLUSTER_NUM=300
 python tools/train_net.py --config-file configs/COCO-PanopticSegmentation/u2seg_eval_300.yaml --eval-only --eval-mode eval --num-gpus 8

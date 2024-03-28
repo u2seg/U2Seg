@@ -120,7 +120,7 @@ python tools/train_net.py --config-file configs/COCO-PanopticSegmentation/u2seg_
 
 #### 3. get evaluation results for instance segmentation, semantic segmentation and panoptic segmentation
 ```
-python tools/train_net.py --config-file configs/COCO-PanopticSegmentation/u2seg_eval.yaml --eval-only --eval-mode eval --num-gpus 8
+python tools/train_net.py --config-file configs/COCO-PanopticSegmentation/u2seg_eval_300.yaml --eval-only --eval-mode eval --num-gpus 8
 ```
 * this can be executed by multiple gpus.
 

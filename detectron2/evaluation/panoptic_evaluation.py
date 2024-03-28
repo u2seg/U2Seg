@@ -50,6 +50,7 @@ class COCOPanopticEvaluator(DatasetEvaluator):
             PathManager.mkdirs(self._output_dir)
 
         if os.path.exists('./hungarian_matching/semantic_mapping.json'):
+            self.mode = 'eval'
             self.semantic_mapping_dict = json.load(
                 open('./hungarian_matching/semantic_mapping.json'))
             self.instance_mapping_dict = json.load(

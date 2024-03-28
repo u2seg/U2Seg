@@ -113,9 +113,9 @@ Run on multiple machines:
         help="Whether to attempt to resume from the checkpoint directory. "
         "See documentation of `DefaultTrainer.resume_or_load()` for what it means.",
     )
-    parser.add_argument("--eval-only", default=False, action="store_true", help="perform evaluation only")
-    parser.add_argument("--eval-mode", default='eval', help="choose from [hungarian_matching] or [eval]")
-    parser.add_argument("--num-gpus", type=int, default=8, help="number of gpus *per machine*")
+    parser.add_argument("--eval-only", default=True, action="store_true", help="perform evaluation only")
+    parser.add_argument("--eval-mode", default='hungarian_matching', help="choose from [hungarian_matching] or [eval]")
+    parser.add_argument("--num-gpus", type=int, default=1, help="number of gpus *per machine*")
     parser.add_argument("--num-machines", type=int, default=1, help="total number of machines")
     parser.add_argument(
         "--machine-rank", type=int, default=0, help="the rank of this machine (unique per machine)"
@@ -561,7 +561,7 @@ class DefaultTrainer(TrainerBase):
         return build_detection_test_loader(cfg, dataset_name)
 
     @classmethod
-    def build_evaluator(cls, cfg, dataset_name):
+    def build_evaluator(cls, cfg, dataset_name, eval_mode):
         """
         Returns:
             DatasetEvaluator or None
@@ -577,7 +577,7 @@ Alternatively, you can call evaluation functions yourself (see Colab balloon tut
         )
 
     @classmethod
-    def test(cls, cfg, model, evaluators=None):
+    def test(cls, cfg, model, evaluators=None, eval_mode = 'eval'):
         """
         Evaluate the given model. The given model is expected to already contain
         weights to evaluate.
@@ -609,7 +609,7 @@ Alternatively, you can call evaluation functions yourself (see Colab balloon tut
                 evaluator = evaluators[idx]
             else:
                 try:
-                    evaluator = cls.build_evaluator(cfg, dataset_name)
+                    evaluator = cls.build_evaluator(cfg, dataset_name, eval_mode=eval_mode)
                 except NotImplementedError:
                     logger.warn(
                         "No evaluator found. Use `DefaultTrainer.test(evaluators=)`, "

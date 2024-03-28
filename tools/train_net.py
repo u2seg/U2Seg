@@ -39,7 +39,7 @@ from detectron2.evaluation import (
 from detectron2.modeling import GeneralizedRCNNWithTTA
 
 
-def build_evaluator(cfg, dataset_name, output_folder=None):
+def build_evaluator(cfg, dataset_name, output_folder=None, eval_mode='eval'):
     """
     Create evaluator(s) for a given dataset.
     This uses the special metadata "evaluator_type" associated with each builtin dataset.
@@ -56,10 +56,11 @@ def build_evaluator(cfg, dataset_name, output_folder=None):
                 dataset_name,
                 distributed=True,
                 output_dir=output_folder,
+                mode=eval_mode
             )
         )
     if evaluator_type in ["coco", "coco_panoptic_seg"]:
-        evaluator_list.append(COCOEvaluator(dataset_name, output_dir=output_folder))
+        evaluator_list.append(COCOEvaluator(dataset_name, output_dir=output_folder, mode=eval_mode))
     if evaluator_type == "coco_panoptic_seg":
         evaluator_list.append(COCOPanopticEvaluator(dataset_name, output_folder))
     if evaluator_type == "cityscapes_instance":
@@ -88,8 +89,8 @@ class Trainer(DefaultTrainer):
     """
 
     @classmethod
-    def build_evaluator(cls, cfg, dataset_name, output_folder=None):
-        return build_evaluator(cfg, dataset_name, output_folder)
+    def build_evaluator(cls, cfg, dataset_name, output_folder=None, eval_mode='eval'):
+        return build_evaluator(cfg, dataset_name, output_folder, eval_mode)
 
     @classmethod
     def test_with_TTA(cls, cfg, model):
@@ -129,7 +130,7 @@ def main(args):
         DetectionCheckpointer(model, save_dir=cfg.OUTPUT_DIR).resume_or_load(
             cfg.MODEL.WEIGHTS, resume=args.resume
         )
-        res = Trainer.test(cfg, model)
+        res = Trainer.test(cfg, model, eval_mode=args.eval_mode)
         if cfg.TEST.AUG.ENABLED:
             res.update(Trainer.test_with_TTA(cfg, model))
         if comm.is_main_process():
@@ -153,7 +154,6 @@ def main(args):
 if __name__ == "__main__":
     args = default_argument_parser().parse_args()
     print("Command Line Args:", args)
-    print("Parsed config_file:", args.config_file)
     launch(
         main,
         args.num_gpus,

@@ -1,5 +1,6 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import contextlib
+import sys
 import copy
 import io
 import itertools
@@ -56,6 +57,7 @@ class COCOEvaluator(DatasetEvaluator):
         use_fast_impl=True,
         kpt_oks_sigmas=(),
         allow_cached_coco=True,
+        mode = 'hungarian_matching'
     ):
         """
         Args:
@@ -152,6 +154,9 @@ class COCOEvaluator(DatasetEvaluator):
         if self._do_evaluation:
             self._kpt_oks_sigmas = kpt_oks_sigmas
 
+        self.mode = mode
+        self.hungarain_matching_save_path = './hungarian_matching/instance_mapping.json'
+
     def reset(self):
         self._predictions = []
 
@@ -230,15 +235,11 @@ class COCOEvaluator(DatasetEvaluator):
         pred_det_cate = []
         pred_det_conf_score = []
         for _result in coco_results:
-            if _result['score'] < 0.6: #TODO: find this thresh
+            if _result['score'] < 0.6: #TODO: find this thresh, we have ablations in the paper for affect of these threshold
                 continue
             pred_box = _result['bbox']
 
             img_id = _result['image_id']
-            # gt_imgs_ids = self._coco_api.getAnnIds(imgIds=img_id)
-            # if len(gt_imgs_ids) == 0:
-            #     continue
-            # gt_anns = self._coco_api.loadAnns(ids=gt_imgs_ids)
             gt_anns = self._coco_api.imgToAnns[img_id]
             if gt_anns == 0:
                 continue
@@ -250,7 +251,7 @@ class COCOEvaluator(DatasetEvaluator):
             ious = maskUtils.iou([pred_box],gt_anns_bbox,iscrowd)
             try:
                 for idx, iou in enumerate(ious.tolist()[0]):
-                    if iou > 0.7: #TODO: find that thresh
+                    if iou > 0.7: #TODO: find that thresh, we have ablations in the paper for affect of these threshold
                         pseudo_gt_cate.append(gt_cate_mapping[gt_anns[idx]['category_id']])
                         pred_det_cate.append(_result['category_id'])
                         pred_det_conf_score.append((_result['score']))
@@ -260,15 +261,25 @@ class COCOEvaluator(DatasetEvaluator):
 
         # do the hungarain matccahing
         mapping_dict = self.hungarain_matching(all_preds=np.array(pred_det_cate), all_targets=np.array(pseudo_gt_cate), num_classes=80, num_labeled=num_cls)
-        print(mapping_dict)
-        # save the mapping dict
-        os.makedirs(os.path.dirname(save_path), exist_ok=True)
-        with open(save_path, 'w', encoding='utf-8') as f:
-            json.dump(mapping_dict, f, ensure_ascii=False)
+
+        if self.mode == 'hungarian_matching':
+            # print(mapping_dict)
+            # save the mapping dict
+            os.makedirs(os.path.dirname(save_path), exist_ok=True)
+            with open(save_path, 'w', encoding='utf-8') as f:
+                json.dump(mapping_dict, f, ensure_ascii=False)
 
         return mapping_dict
 
     def hungarain_matching(self, all_preds, all_targets, num_labeled, num_classes):
+        """
+
+        :param all_preds: predicitons
+        :param all_targets: groundtruth
+        :param num_labeled: number of final mapped categories
+        :param num_classes: number of un mapped categories
+        :return: a mapping dict of the predicitons to real catgeorus
+        """
         n_nomapping = 0
         mapping_dict = {}
         for i in range(num_labeled):
@@ -289,18 +300,14 @@ class COCOEvaluator(DatasetEvaluator):
         self._logger.info("Preparing results for COCO format ...")
         coco_results = list(itertools.chain(*[x["instances"] for x in predictions]))
 
-        # # save the results
-        # with open("/shared/niudt/cutler_iclr/CutLER/cutler/output/cls_aware/results/ours/2911_cp_r1_final_COCO5K.json", 'w',
-        #           encoding='utf-8') as f:
-        #     json.dump(coco_results, f, ensure_ascii=False)
-
-        # save the box feature for tsne
-        # self._save_box_feature(coco_results, '/shared/niudt/cutler_iclr/CutLER/cutler/output/cls_aware/tsne/cocoval_ours_300.json')
-
-        # # do hangairan mapping
+        # hangairan mapping
         cls_num = 300
         mapping_dict = self.do_hangarain_mapping(cls_num, coco_results,
-                                                 save_path="/home/niudt/detectron2/tools/hungarain_matching/cocotrain_300/instance_mapping.json")
+                                                 save_path=self.hungarain_matching_save_path)
+
+        if self.mode == 'hungarian_matching':
+            print('Hungarian Matching Finished! Please change the mode and run again to get eval results.')
+            sys.exit()
 
 
         tasks = self._tasks or self._tasks_from_predictions(coco_results)
@@ -326,12 +333,12 @@ class COCOEvaluator(DatasetEvaluator):
 
 
 
-        if self._output_dir:
-            file_path = os.path.join(self._output_dir, "coco_instances_results.json")
-            self._logger.info("Saving results to {}".format(file_path))
-            with PathManager.open(file_path, "w") as f:
-                f.write(json.dumps(coco_results))
-                f.flush()
+        # if self._output_dir:
+        #     file_path = os.path.join(self._output_dir, "coco_instances_results.json")
+        #     self._logger.info("Saving results to {}".format(file_path))
+        #     with PathManager.open(file_path, "w") as f:
+        #         f.write(json.dumps(coco_results))
+        #         f.flush()
 
         if not self._do_evaluation:
             self._logger.info("Annotations are not available for evaluation.")

@@ -107,15 +107,18 @@ We give a few demo images in ```demo/images``` and the corresponding visualizati
 ### Evaluation
 To reproduce the quantitative evaluation results in the main paper, user can following the steps below.
 
-Since we should first do the hungarian matching to map our cluter id to real cagetory id. We have two mode that should be execute one by one. The user needs to first run:
+#### 1. prepare the ground truth annotations
+Since the original official panoptic annotations have 53 semantic categories, while u2seg has 15 supercategories, first step run [code](https://github.com/u2seg/U2Seg/blob/main/datasets/prepare_ours/get_panoptic_anns_supercategory.py) to generate the supercategory version of groudtruth, then you will get ```panoptic_val2017_300super.json``` under the ```detectron2/datasets/datasets/panoptic_anns``` path.
+
+#### 2. get hungarain mapping dict
+We do the hungarian matching to map our cluter id to real cagetory id. The user needs to run:
 
 ```
 python tools/train_net.py --config-file configs/COCO-PanopticSegmentation/u2seg_eval.yaml --eval-only --eval-mode hungarian_matching --num-gpus 1
 ```
-* note that this should run only use 1 gpu. After that, a folder named ```hungarian_matching``` should be gnerated in ```./```, we provide an [example with cluter number is 300](https://drive.google.com/drive/folders/19ka73SH1mHAfflzlZpA2McWeZakLujEX?usp=sharing) we generate the user can have a quick check of the intermidate results.
+* note that this should be run only by using one single gpu. After that, a folder named ```hungarian_matching``` should be gnerated in ```./```, we provide an [example with cluter number is 300](https://drive.google.com/drive/folders/19ka73SH1mHAfflzlZpA2McWeZakLujEX?usp=sharing) we generate the user can have a quick check of the intermidate results.
 
-Then run a second time with:
-
+#### 3. get evaluation results for instance segmentation, semantic segmentation and panoptic segmentation
 ```
 python tools/train_net.py --config-file configs/COCO-PanopticSegmentation/u2seg_eval.yaml --eval-only --eval-mode eval --num-gpus 8
 ```

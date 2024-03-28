@@ -110,9 +110,9 @@ _PREDEFINED_SPLITS_COCO_PANOPTIC = {
         f"./prepare_ours/u2seg_annotations/panoptic_annotations/panoptic_stuff_cocotrain_{cluster_num}",
     ),
     "coco_2017_val_panoptic": (
-        "/home/niudt/u2seg_test/detectron2/datasets/datasets/coco/val2017",
-        "/home/niudt/u2seg_test/detectron2/datasets/datasets/panoptic_anns/panoptic_val2017.json",
-        "/home/niudt/u2seg_test/detectron2/datasets/datasets/panoptic_anns/panoptic_stuff_val2017",
+        "datasets/panoptic_anns/panoptic_val2017",
+        f"datasets/panoptic_anns/panoptic_val2017_{cluster_num}super.json", # see repo evaluation desscription to find how to generate this
+        "datasets/panoptic_anns/panoptic_stuff_val2017",
     ),
     "coco_2017_val_100_panoptic": (
         "coco/panoptic_val2017_100",

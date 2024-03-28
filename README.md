@@ -111,7 +111,7 @@ To reproduce the quantitative evaluation results in the main paper, one can foll
 Since the original official panoptic annotations have 53 semantic categories, while u2seg has 15 supercategories, first run [```get_panoptic_anns_supercategory.py```](https://github.com/u2seg/U2Seg/blob/main/datasets/prepare_ours/get_panoptic_anns_supercategory.py) to generate the supercategory version of groudtruth, then you will get ```panoptic_val2017_300super.json``` under the ```detectron2/datasets/datasets/panoptic_anns``` path.
 
 #### 2. Set the CATEGORIES
-User should manually comment out line 42-176 in [```detectron2/data/datasets/builtin_meta.py```](https://github.com/u2seg/U2Seg/blob/main/detectron2/data/datasets/builtin_meta.py) when switch from training to evaluation. Also user needs to maunally change the ```cluster_num``` in line 39 in [```detectron2/evaluation/panoptic_evaluation.py```](https://github.com/u2seg/U2Seg/blob/main/detectron2/evaluation/panoptic_evaluation.py) based on your own seeting.
+User should manually comment out line 42-176 in [```detectron2/data/datasets/builtin_meta.py```](https://github.com/u2seg/U2Seg/blob/148cc100c3a13426700af619aad68a6afa5c5f6f/detectron2/data/datasets/builtin_meta.py#L42) when switch from training to evaluation. Also user needs to maunally change the ```cluster_num``` in line 39 in [```detectron2/evaluation/panoptic_evaluation.py```](https://github.com/u2seg/U2Seg/blob/148cc100c3a13426700af619aad68a6afa5c5f6f/detectron2/evaluation/panoptic_evaluation.py#L39) based on your own seeting.
 
 #### 3. Get hungarain mapping dict
 We do the hungarian matching to map our cluter id to real cagetory id. The user needs to run:

@@ -36,26 +36,28 @@ class COCOPanopticEvaluator(DatasetEvaluator):
             output_dir: output directory to save results for evaluation.
         """
         self._metadata = MetadataCatalog.get(dataset_name)
+        cluster_num = 300
         self._thing_contiguous_id_to_dataset_id = {
             v: k for k, v in self._metadata.thing_dataset_id_to_contiguous_id.items()
         }
-        self._stuff_contiguous_id_to_dataset_id = {
-            v: k for k, v in self._metadata.stuff_dataset_id_to_contiguous_id.items()
-        }
+        self._stuff_contiguous_id_to_dataset_id = {}
+        for i in range(1, 16):
+            self._stuff_contiguous_id_to_dataset_id[i] = cluster_num + i
+        self._stuff_contiguous_id_to_dataset_id[0] = 0
 
         self._output_dir = output_dir
         if self._output_dir is not None:
             PathManager.mkdirs(self._output_dir)
 
         self.semantic_mapping_dict = json.load(
-            open('/home/niudt/detectron2/tools/hungarain_matching/cocotrain_300/semantic_mapping.json'))
+            open('./hungarian_matching/semantic_mapping.json'))
         self.instance_mapping_dict = json.load(
-            open('/home/niudt/detectron2/tools/hungarain_matching/cocotrain_300/instance_mapping.json'))
+            open('./hungarian_matching/instance_mapping.json'))
 
     def reset(self):
         self._predictions = []
 
-    def _convert_category_id_(self, segment_info):
+    def _convert_category_id_org(self, segment_info):
         isthing = segment_info.pop("isthing", None)
         if isthing is None:
             # the model produces panoptic category id directly. No more conversion needed

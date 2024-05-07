@@ -1,0 +1,21 @@
+RUN_NAME: 'cifar10'
+
+SEED: 42
+
+DATASET:
+  NAME: 'cifar10'
+  TRANSFORM_NAME: 'SCAN-cifar10'
+
+EPOCHS: 200
+
+MODEL:
+  ARCH: 'ResNet18'
+  PRETRAIN_PATH: 'pretrained/pretrained_kNN_cifar10/model.pth.tar'
+
+USLT_PRETRAIN:
+  TOPK_NEIGHBORS_PATH: 'pretrained/pretrained_kNN_cifar10/topk-train-neighbors.npy'
+  NUM_NEIGHBORS: 20
+  NUM_SELECTED_SAMPLES: 40
+  CONFIDENCE_THRESHOLD: 0.95
+  SHARPEN_TEMPERATURE: 0.25
+  EMA_DECAY: 0.0

@@ -1,0 +1,43 @@
+# From imagenet100_feat_v5
+RUN_NAME: 'imagenet100_v5'
+
+SEED: 42
+
+DATASET:
+  NAME: 'imagenet100'
+  # Previously set to imagenet (should have no difference)
+  TRANSFORM_NAME: 'imagenet100'
+  ROOT_DIR: '../data/ImageNet100'
+
+DATALOADER:
+  BATCH_SIZE: 2048
+  WORKERS: 4
+
+EPOCHS: 100
+
+MODEL:
+  ARCH: 'resnet50'
+  PRETRAIN_PATH: 'pretrained/pretrained_kNN_imagenet100/model.pth.tar'
+  BACKBONE_DIM: 2048
+
+USLT_PRETRAIN:
+  TOPK_NEIGHBORS_PATH: 'pretrained/pretrained_kNN_imagenet100/topk-train-neighbors.npy'
+  NUM_NEIGHBORS: 20
+  # There could be empty selections in the clusters.
+  NUM_SELECTED_SAMPLES: 400
+  # Avoid instability
+  LOCAL_LOSS_SCALE: 0.5
+  ADJUSTMENT_WEIGHT: 2.5
+  SHARPEN_TEMPERATURE: 0.5
+  CONFIDENCE_THRESHOLD: 0.0
+  REWEIGHT: False
+  REWEIGHT_RENORM: True
+  EMA_DECAY: 0.0
+  # Enabled if number of classes in the dataset is at least 100
+  MEAN_OUTSIDE_MASK: True
+  # Frozen backbone for ImageNet
+  UPDATE_HEAD_ONLY: True
+  TURN_OFF_LOCAL_LOSS_AFTER_EPOCH: 100.0
+  COUNT_EMA_MIN_TH: 50
+  COUNT_EMA_MAX_TH: 500
+  REASSIGN_AFTER_STEPS: 124

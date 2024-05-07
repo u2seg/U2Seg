@@ -1,0 +1,17 @@
+RUN_NAME: 'cifar10_usl-t_simclr'
+
+DATASET:
+  NAME: 'cifar10'
+  TRANSFORM_NAME: 'FixMatch-cifar10'
+
+DATALOADER:
+  BATCH_SIZE: 128
+
+MODEL:
+  ARCH: 'ResNet18'
+  USE_CLD: False
+  PRETRAIN_PATH: 'pretrained/simclr_cifar-10.pth.tar'
+
+FINETUNE:
+  LABELED_INDICES_PATH: '../selective_labeling/saved/cifar10_usl-t/selected_indices_40_0.npy'
+  REPEAT_DATA: 100

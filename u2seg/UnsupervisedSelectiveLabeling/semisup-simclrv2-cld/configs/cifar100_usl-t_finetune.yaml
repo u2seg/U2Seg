@@ -1,0 +1,16 @@
+RUN_NAME: 'cifar100_usl-t'
+
+DATASET:
+  NAME: 'cifar100'
+  TRANSFORM_NAME: 'CLD-cifar100'
+
+DATALOADER:
+  BATCH_SIZE: 128
+
+MODEL:
+  ARCH: 'ResNet18'
+  PRETRAIN_PATH: 'pretrained/cifar100_ckpt_epoch_200.pth'
+
+FINETUNE:
+  LABELED_INDICES_PATH: '../selective_labeling/saved/cifar100_usl-t/selected_indices_400_0.npy'
+  REPEAT_DATA: 100

@@ -1,0 +1,32 @@
+RUN_NAME: 'imagenet_usl_dino_0.2'
+
+SKIP_SAVE: False
+RECOMPUTE_Feat: True
+RECOMPUTE_KNN: True
+RECOMPUTE_ALL: True
+RECOMPUTE_NUM_DEP: False
+
+DATASET:
+  NAME: 'imagenet'
+  TRANSFORM_NAME: 'imagenet'
+  ROOT_DIR: '/home/xinyang/U2Seg_Project/datasets/cutler_save' # Change this to your masked instance raw dataset
+
+DATALOADER:
+  BATCH_SIZE: 8
+
+MODEL:
+  ARCH: 'DINO-ViT-B/16'
+
+USL:
+  NUM_SELECTED_SAMPLES: 300
+  KNN_K: 20
+  SEEDS: [0]
+  K_MEANS_NITERS: 100
+  REG:
+    # DINO has a larger dimension on feats and should have a lower adjustment weight
+    W: 0.05
+    NITERS: 2
+    MOMENTUM: 0.0
+    HORIZON_NUM: 32
+    ALPHA: 1.0
+    EXCLUDE_SAME_CLUSTER: True

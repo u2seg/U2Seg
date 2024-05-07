@@ -1,0 +1,69 @@
+import os
+from yacs.config import CfgNode as CN
+
+mode = os.environ["USL_MODE"]
+
+_C = CN()
+_C.RUN_NAME = ''
+_C.SAVE_DIR = 'saved'
+_C.SAVE_DIR_EXIST_OK = True
+_C.RUN_DIR = ''
+_C.SEED = None
+_C.SKIP_SAVE = False
+_C.EVAL_ONLY = False
+# Include options in command line in RUN_NAME
+_C.OPTS_IN_RUN_NAME = False
+_C.BACKUP_PYTHON_FILE = True
+
+# Set to False to use the saved numpy files in RUN_DIR
+_C.RECOMPUTE_ALL = True
+# Set to True to recompute NUM_SELECTED_SAMPLES dependent steps such as k-Means and selection even if RECOMPUTE_ALL is False
+_C.RECOMPUTE_NUM_DEP = True
+
+_C.DATASET = CN()
+_C.DATASET.NAME = ''
+_C.DATASET.ROOT_DIR = '../data'
+# CLD and FixMatch uses different normalization in transform
+_C.DATASET.TRANSFORM_NAME = ''
+
+# ImageNet subsets: path to subset file
+_C.DATASET.SUBSET = ''
+
+_C.DATALOADER = CN()
+_C.DATALOADER.BATCH_SIZE = 1024
+_C.DATALOADER.WORKERS = 32
+
+_C.MODEL = CN()
+_C.MODEL.ARCH = 'ResNet18'
+_C.MODEL.PRETRAIN_PATH = ''
+_C.MODEL.BACKBONE_DIM = 512
+
+_C.OPTIMIZER = CN()
+_C.OPTIMIZER.NAME = 'Adam'
+_C.OPTIMIZER.LR = 0.0001
+_C.OPTIMIZER.WEIGHT_DECAY = 0.0001
+
+_C.EPOCHS = 200
+
+if mode == "USLT_PRETRAIN":
+    _C.USLT_PRETRAIN = CN()
+    _C.USLT_PRETRAIN.UPDATE_HEAD_ONLY = False
+    _C.USLT_PRETRAIN.TOPK_NEIGHBORS_PATH = ''
+    _C.USLT_PRETRAIN.ADJUSTMENT_WEIGHT = 5.0
+    _C.USLT_PRETRAIN.NUM_SELECTED_SAMPLES = 40
+    _C.USLT_PRETRAIN.NUM_NEIGHBORS = 20
+    _C.USLT_PRETRAIN.CONFIDENCE_THRESHOLD = 0.95
+    _C.USLT_PRETRAIN.TURN_OFF_LOCAL_LOSS_AFTER_EPOCH = float('inf')
+    _C.USLT_PRETRAIN.LOCAL_LOSS_SCALE = 5.0
+    _C.USLT_PRETRAIN.EMA_DECAY = 0.999
+    _C.USLT_PRETRAIN.MEAN_OUTSIDE_MASK = False
+    _C.USLT_PRETRAIN.REWEIGHT = True
+    _C.USLT_PRETRAIN.REWEIGHT_RENORM = False
+    _C.USLT_PRETRAIN.COUNT_EMA_MIN_TH = 100
+    _C.USLT_PRETRAIN.COUNT_EMA_MAX_TH = 1000
+    _C.USLT_PRETRAIN.REASSIGN_AFTER_STEPS = 300
+    _C.USLT_PRETRAIN.SHARPEN_TEMPERATURE = 0.25
+    _C.USLT_PRETRAIN.GLOBAL_START_EPOCH = 0
+
+
+cfg = _C

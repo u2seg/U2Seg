@@ -1,1 +1,0 @@
-CUDA_VISIBLE_DEVICES=8 python eval_segmentation.py
